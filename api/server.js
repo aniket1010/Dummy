@@ -21,15 +21,6 @@ const app = express();
 dotenv.config();
 mongoose.set("strictQuery", true);
 
-app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
@@ -49,7 +40,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors({ origin: BASE_URL, credentials: true }));
+app.use(
+  cors({ origin: "https://earnest-yeot-172cd6.netlify.app", credentials: true })
+);
 app.use(express.json());
 app.use(cookieParser());
 
