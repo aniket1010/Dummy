@@ -41,7 +41,11 @@ app.use((req, res, next) => {
 });
 
 app.use(
-  cors({ origin: "https://earnest-yeot-172cd6.netlify.app", credentials: true })
+  cors({
+    origin:
+      "https://64de4b6846c2c825b51ea4c1--earnest-yeot-172cd6.netlify.app",
+    credentials: true,
+  })
 );
 app.use(express.json());
 app.use(cookieParser());
