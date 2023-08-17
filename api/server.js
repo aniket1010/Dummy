@@ -12,8 +12,11 @@ import sendRoute from "./routes/send.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import getNameRoute from "./routes/getName.route.js";
-const BASE_URL = process.env.BASE_URL;
 
+dotenv.config();
+
+const BASE_URL = process.env.BASE_URL;
+const PORT = process.env.PORT || 8800;
 const app = express();
 dotenv.config();
 mongoose.set("strictQuery", true);
@@ -58,7 +61,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
 
-app.listen(8800, () => {
+app.listen(PORT, () => {
   connect();
   console.log("Backend server is running!");
 });
